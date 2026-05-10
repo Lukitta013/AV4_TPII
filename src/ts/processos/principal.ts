@@ -1,10 +1,9 @@
 import Processo from "../abstracoes/processo"
 import MenuPrincipal from "../menus/menuPricipal"
-import TipoCadastroCliente from "./tipos/tipoCadastroCliente"
-import TipoListagemClientes from "./tipos/tipoListagemClientes"
-import TipoEdicaoCliente from "./tipos/tipoEdicaoCliente"
-import TipoExclusaoCliente from "./tipos/tipoExclusaoCliente"     
-import DependenteTornarTitular from "./cliente/dependenteTornarTitular" 
+import ListagemAcomodacoes from "./listagemAcomodacoes"
+import TipoCadastroCliente from "./tipoCadastroCliente"
+import TipoListagemClientes from "./tipoListagemClientes"
+import TipoGestaoHospedagem from "./tipoGestaoHospedagem"
 
 export default class Principal extends Processo {
     constructor() {
@@ -12,30 +11,24 @@ export default class Principal extends Processo {
         this.execucao = true
         this.menu = new MenuPrincipal()
     }
-
     processar(): void {
         this.menu.mostrar()
         this.opcao = this.entrada.receberNumero('Qual opção desejada?')
-
         switch (this.opcao) {
             case 1:
                 this.processo = new TipoCadastroCliente()
-                this.processo.processar()
-                break
-            case 2:                                          
-                this.processo = new TipoEdicaoCliente()
                 this.processo.processar()
                 break
             case 3:
                 this.processo = new TipoListagemClientes()
                 this.processo.processar()
                 break
-            case 4:                                          
-                this.processo = new TipoExclusaoCliente()
+            case 5:
+                this.processo = new ListagemAcomodacoes()
                 this.processo.processar()
                 break
-            case 5:
-                this.processo = new DependenteTornarTitular()
+            case 6:
+                this.processo = new TipoGestaoHospedagem()
                 this.processo.processar()
                 break
             case 0:
@@ -48,4 +41,4 @@ export default class Principal extends Processo {
         }
     }
 }
-// https://www.youtube.com/watch?v=hKARChoQ5I8
+//Vou explodir o morumbi
